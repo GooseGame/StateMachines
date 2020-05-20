@@ -78,7 +78,6 @@ void CreateMoore(Moore& moore, map<string, string>& automatStates)
 		for (size_t j = 0; j < moore.graph[0].size(); ++j)
 		{
 			string edgeLabel = EDGE_LABEL + to_string(i + 1);
-			cout << "ya sosal" << endl;
 			boost::add_edge(vertices[j], vertices[moore.graph[i][j]], { edgeLabel }, graph);
 		}
 	}
