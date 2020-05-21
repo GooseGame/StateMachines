@@ -230,7 +230,7 @@ int main(int argc, char* argv[])
 {
 	if (argc != 3)
 	{
-		cout << "automatToOtherAutomat.exe <inputfile> <outputfile>" << endl;
+		cout << "Usage: enter 'minimization.exe inputFile.txt outputFile.txt'" << endl;
 		return 0;
 	}
 	int inputCharsNum = 0, outputCharsNum = 0, vertexNum = 0;
