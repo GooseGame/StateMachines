@@ -91,7 +91,7 @@ void CreateMealy(Mealy& mealy, map<string, string>& automatStates)
 	map<string, string>::iterator it = automatStates.begin();
 	for (size_t i = 0; i < mealy.graph[0].size(); ++i)
 	{
-		string vertexLabel = VERTEX_LABEL + to_string(i);// +mooreMachine.outputs[i];
+		string vertexLabel = VERTEX_LABEL + to_string(i);
 		map<string, string>::iterator it = automatStates.find(vertexLabel);
 		vertices.push_back(boost::add_vertex({ vertexLabel }, graph));
 	}
@@ -121,7 +121,7 @@ void createMoore(int inputCharsCount, int vertexCount, ifstream& inputFile, ofst
 	vector<string> vertexes;
 	string vertexValue;
 
-	for (int i = 0; i < inputCharsCount; i++) //заполняем таблицу c исходными состояниями
+	for (int i = 0; i < inputCharsCount; i++) //fill source table
 	{
 		for (int j = 0; j < vertexCount; j++)
 		{
@@ -203,13 +203,13 @@ void createMealy(int inputCharsCount, int vertexCount, ifstream& inputFile, ofst
 	}
 
 	map<string, string>::iterator it = states.begin();
-	for (int i = 0; i < vertexCount; i++, it++) // добавляем выходные символы к вершинам
+	for (int i = 0; i < vertexCount; i++, it++) // add input symbols to vertexes
 	{
 		inputFile >> outputChar;
 		it->second = outputChar;
 	}
 
-	for (int i = 0; i < inputCharsCount; i++) //заполняем выход
+	for (int i = 0; i < inputCharsCount; i++) //fill output
 	{
 		mealy.graph.push_back({});
 		for (int j = 0; j < vertexCount; j++)
