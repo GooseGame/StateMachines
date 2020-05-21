@@ -236,15 +236,15 @@ int main(int argc, char* argv[])
 	int inputCharsNum = 0, outputCharsNum = 0, vertexNum = 0;
 	string inputChar = "", outputChar = "", vertexValue = "", automatType = "";
 
-	ifstream inputFile(argv[1]);
-	ofstream outputAutomat(argv[2]);
-	if (!inputFile || !outputAutomat)
+	ifstream input(argv[1]);
+	ofstream output(argv[2]);
+	if (!input || !output)
 	{
 		cout << "input or output file not found" << endl;
 		return 0;
 	}
 
-	inputFile >> inputCharsNum >> outputCharsNum >> vertexNum >> automatType;
+	input >> inputCharsNum >> outputCharsNum >> vertexNum >> automatType;
 
 	string** outputTable = new string * [inputCharsNum];
 	for (int i = 0; i < inputCharsNum; i++)
@@ -254,14 +254,14 @@ int main(int argc, char* argv[])
 
 	if (automatType == MOORE_AUTOMAT)
 	{
-		createMealy(inputCharsNum, vertexNum, inputFile, outputAutomat, outputTable);
+		createMealy(inputCharsNum, vertexNum, inputFile, output, outputTable);
 	}
 	else if (automatType == MEALY_AUTOMAT)
 	{
-		createMoore(inputCharsNum, vertexNum, inputFile, outputAutomat, outputTable);
+		createMoore(inputCharsNum, vertexNum, inputFile, output, outputTable);
 	}
 	else
 	{
-		outputAutomat << "Unknown automat" << endl;
+		output << "Unknown automat" << endl;
 	}
 }
