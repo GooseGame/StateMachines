@@ -5,6 +5,8 @@
 #include <vector>
 
 #include <boost/graph/graphviz.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/iteration_macros.hpp>
 
 using namespace std;
 
