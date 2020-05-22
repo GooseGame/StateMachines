@@ -1,5 +1,4 @@
-﻿//Visual Studio 19, Tokarev Andrey, PS 31
-#include "pch.h"
+//Visual Studio 19, Tokarev Andrey, PS 31
 #include <iostream>
 #include <fstream>
 #include <string>
