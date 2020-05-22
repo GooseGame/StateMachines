@@ -16,10 +16,7 @@ const string OUTPUT_STATE_CHAR = "A";
 
 struct StateTypeMachine
 {
-    vector<int> inputs;
-    vector<string> outputs;
     vector<vector<string>> graph;
-    vector<string> states;
 };
 
 struct VertexProps
@@ -131,7 +128,7 @@ vector<string> getVectorWithClassNames(vector<string> sourceVector, int begIndex
 	return result;
 }
 
-void mealyMachineMinimizer(ifstream& inputFile, ofstream& outputFile, int inputAlphabetCount, int vertexCount)
+void mealyMachineMinimizer(ifstream& input, ofstream& output, int inputAlphabetCount, int vertexCount)
 {
 	string state;
 	MealyAutomate MealyAutomate;
@@ -144,7 +141,7 @@ void mealyMachineMinimizer(ifstream& inputFile, ofstream& outputFile, int inputA
 		{
 			if (i != 0)
 			{
-				inputFile >> state;
+                input >> state;
 				graph.at(i).push_back(state);
 				MealyAutomate.OutSignals.at(i).push_back(state.substr(2));
 			}
@@ -392,16 +389,15 @@ void mealyMachineMinimizer(ifstream& inputFile, ofstream& outputFile, int inputA
 	{
 		for (auto & j : MealyAutomate.output)
 		{
-			outputFile << j.at(i) << ' ';
+			output << j.at(i) << ' ';
 		}
-		outputFile << endl;
+		output << endl;
 	}
     StateTypeMachine mealyMachine;
 	mealyMachine.graph = MealyAutomate.output;
 	CreateMealyGraph(mealyMachine);
-	cout << "mealy: done" << endl;
 }
-void mooreMachineMinimizer(ifstream& inputFile, ofstream& outputFile, int inputAlphabetCount, int vertexCount)
+void mooreMachineMinimizer(ifstream& input, ofstream& output, int inputAlphabetCount, int vertexCount)
 {
 	int classCount = 0;
 	string state;
@@ -419,7 +415,7 @@ void mooreMachineMinimizer(ifstream& inputFile, ofstream& outputFile, int inputA
 			}
 			else
 			{
-				inputFile >> state;
+                input >> state;
 				sourceGraph.at(i).push_back(state);
 			}
 		}
@@ -646,15 +642,14 @@ void mooreMachineMinimizer(ifstream& inputFile, ofstream& outputFile, int inputA
 	{
 		for (auto & j : MooreAutomate.output)
 		{
-			outputFile << j.at(i) << ' ';
+			output << j.at(i) << ' ';
 		}
-		outputFile << endl;
+		output << endl;
 	}
     StateTypeMachine mooreMachine;
 	mooreMachine.graph = MooreAutomate.output;
 
 	CreateMooreGraph(mooreMachine);
-	cout << "moore: done" << endl;
 }
 
 
